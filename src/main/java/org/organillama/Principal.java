@@ -301,7 +301,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMaximizarMouseClicked
 
     private void btnMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizarMouseClicked
-        this.setExtendedState(ICONIFIED);
+        this.setExtendedState(0);
     }//GEN-LAST:event_btnMinimizarMouseClicked
 
     private void BarraSuperiorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraSuperiorMousePressed
