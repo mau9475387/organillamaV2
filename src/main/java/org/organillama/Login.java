@@ -18,7 +18,7 @@ public class Login extends javax.swing.JFrame {
     public int xMouse,yMouse;
     
     public Login() {
-        
+        BaseDeDatos BD = new BaseDeDatos();
         initComponents();
         this.setBackground(new Color(255,255,255,190));
         imagen(fondo, "src//main//java//Imagenes//fondoLogin.png");

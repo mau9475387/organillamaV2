@@ -77,6 +77,11 @@ public class panelCrear extends javax.swing.JPanel {
         lblProyecto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblProyecto.setText("Crear proyecto");
         lblProyecto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblProyecto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblProyectoMouseClicked(evt);
+            }
+        });
         panelRound1.add(lblProyecto, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -109,6 +114,12 @@ public class panelCrear extends javax.swing.JPanel {
         act.setVisible(true);
         pan.setEnabled(false);
     }//GEN-LAST:event_lblActividadMouseClicked
+
+    private void lblProyectoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblProyectoMouseClicked
+        NuevoProyecto act = new NuevoProyecto(pan);
+        act.setVisible(true);
+        pan.setEnabled(false);
+    }//GEN-LAST:event_lblProyectoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
