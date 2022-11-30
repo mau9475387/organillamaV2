@@ -5,6 +5,8 @@
 package org.organillama;
 
 import java.awt.Color;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  *
@@ -12,10 +14,9 @@ import java.awt.Color;
  */
 public class panelCrear extends javax.swing.JPanel {
 
-    /**
-     * Creates new form panelCrear
-     */
-    public panelCrear() {
+    JFrame pan;
+    public panelCrear(JFrame p) {
+        pan = p;
         initComponents();
     }
 
@@ -28,35 +29,93 @@ public class panelCrear extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        crearActividad = new org.organillama.PanelRound();
+        lblActividad = new javax.swing.JLabel();
+        panelRound1 = new org.organillama.PanelRound();
+        lblProyecto = new javax.swing.JLabel();
 
         setBackground(new Color(0,0,0));
         setMinimumSize(new java.awt.Dimension(700, 570));
         setOpaque(false);
+        setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        jLabel1.setText("Panel Crear");
+        jPanel1.setBackground(new Color(242,242,242,40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(171, Short.MAX_VALUE))
+        crearActividad.setBackground(new java.awt.Color(51, 51, 255));
+        crearActividad.setMinimumSize(new java.awt.Dimension(200, 200));
+        crearActividad.setPreferredSize(new java.awt.Dimension(200, 200));
+        crearActividad.setRoundBottomLeft(30);
+        crearActividad.setRoundBottomRight(30);
+        crearActividad.setRoundTopLeft(30);
+        crearActividad.setRoundTopRight(30);
+        crearActividad.setLayout(new java.awt.BorderLayout());
+
+        lblActividad.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        lblActividad.setForeground(new java.awt.Color(255, 255, 255));
+        lblActividad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblActividad.setText("Crear actividad");
+        lblActividad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblActividad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblActividadMouseClicked(evt);
+            }
+        });
+        crearActividad.add(lblActividad, java.awt.BorderLayout.CENTER);
+
+        panelRound1.setBackground(new java.awt.Color(255, 51, 51));
+        panelRound1.setMinimumSize(new java.awt.Dimension(200, 200));
+        panelRound1.setPreferredSize(new java.awt.Dimension(200, 200));
+        panelRound1.setRoundBottomLeft(30);
+        panelRound1.setRoundBottomRight(30);
+        panelRound1.setRoundTopLeft(30);
+        panelRound1.setRoundTopRight(30);
+        panelRound1.setLayout(new java.awt.BorderLayout());
+
+        lblProyecto.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        lblProyecto.setForeground(new java.awt.Color(255, 255, 255));
+        lblProyecto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblProyecto.setText("Crear proyecto");
+        lblProyecto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panelRound1.add(lblProyecto, java.awt.BorderLayout.CENTER);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(crearActividad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(100, 100, 100))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(189, 189, 189)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(168, 168, 168)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(crearActividad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(331, 331, 331))
         );
+
+        add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lblActividadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblActividadMouseClicked
+        
+        NuevaActividad act = new NuevaActividad(pan);
+        act.setVisible(true);
+        pan.setEnabled(false);
+    }//GEN-LAST:event_lblActividadMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private org.organillama.PanelRound crearActividad;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblActividad;
+    private javax.swing.JLabel lblProyecto;
+    private org.organillama.PanelRound panelRound1;
     // End of variables declaration//GEN-END:variables
 }

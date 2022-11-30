@@ -516,22 +516,26 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_lblConfiguracionMouseExited
 
     private void lblConfiguracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblConfiguracionMouseClicked
-        
+        Configuracion btnConfig = new Configuracion(this);
+        btnConfig.setVisible(true);
     }//GEN-LAST:event_lblConfiguracionMouseClicked
 
     private void lblVerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVerMouseClicked
+        if(panelVerOn==false){
         imagen(labelFondo,fondo);
         panelVer ver= new panelVer();
-        panelCrear crear= new panelCrear();
+        panelCrear crear= new panelCrear(this);
         mostrarPanel(ver,crear);
-        
+        }
     }//GEN-LAST:event_lblVerMouseClicked
 
     private void lblCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCrearMouseClicked
-       panelVer ver= new panelVer();
-        panelCrear crear= new panelCrear();
+        if(panelVerOn==true){
+        panelVer ver= new panelVer();
+        panelCrear crear= new panelCrear(this);
         mostrarPanel(ver,crear);
         imagen(labelFondo,fondo);
+        }
     }//GEN-LAST:event_lblCrearMouseClicked
 
     /**
@@ -606,7 +610,7 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
         
         panelVerOn = false;
         panelVer ver= new panelVer();
-        panelCrear crear= new panelCrear();
+        panelCrear crear= new panelCrear(this);
         mostrarPanel(ver,crear);
         
         tiempo();

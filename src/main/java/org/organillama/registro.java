@@ -199,6 +199,9 @@ public class registro extends javax.swing.JFrame {
         btnCancelar.setMaximumSize(new java.awt.Dimension(152, 36));
         btnCancelar.setMinimumSize(new java.awt.Dimension(152, 36));
         btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCancelarMouseEntered(evt);
             }
@@ -473,7 +476,10 @@ public class registro extends javax.swing.JFrame {
 
     private void btnRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarseMouseClicked
         if(PasswordFieldContraseñaConf.getText().equals(PasswordFieldContraseña.getText())){
-            
+            Login log = new Login();
+            log.setVisible(true);
+            //inserte método para añadir datos a la BD
+            this.dispose();
         }
         else{
             JOptionPane.showMessageDialog(null, "Reescriba la contraseña", "Confirmacion no valida"
@@ -502,7 +508,10 @@ public class registro extends javax.swing.JFrame {
     }//GEN-LAST:event_PasswordFieldContraseñaConfActionPerformed
 
     private void lblFlechaIzMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFlechaIzMouseClicked
-        // TODO add your handling code here:
+       Login log = new Login();
+            log.setVisible(true);
+            
+            this.dispose();
     }//GEN-LAST:event_lblFlechaIzMouseClicked
 
     private void lblFlechaIzMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFlechaIzMouseEntered
@@ -512,6 +521,13 @@ public class registro extends javax.swing.JFrame {
     private void lblFlechaIzMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFlechaIzMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_lblFlechaIzMouseExited
+
+    private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
+        Login log = new Login();
+            log.setVisible(true);
+            
+            this.dispose();
+    }//GEN-LAST:event_btnCancelarMouseClicked
 
     /**
      * @param args the command line arguments
