@@ -71,8 +71,6 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
         lblHora = new javax.swing.JLabel();
         lblRelojIcono = new javax.swing.JLabel();
         lblRelojFecha = new javax.swing.JLabel();
-        panelCalendario = new org.organillama.PanelRound();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
         panelActividades = new org.organillama.PanelRound();
         lblVer = new javax.swing.JLabel();
         lblCrear = new javax.swing.JLabel();
@@ -247,31 +245,6 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
                 .addGap(24, 24, 24))
         );
 
-        panelCalendario.setBackground(new Color(255,255,255,40));
-        panelCalendario.setMinimumSize(new java.awt.Dimension(530, 650));
-        panelCalendario.setPreferredSize(new java.awt.Dimension(530, 650));
-        panelCalendario.setRoundBottomLeft(30);
-        panelCalendario.setRoundBottomRight(30);
-        panelCalendario.setRoundTopLeft(30);
-        panelCalendario.setRoundTopRight(30);
-
-        javax.swing.GroupLayout panelCalendarioLayout = new javax.swing.GroupLayout(panelCalendario);
-        panelCalendario.setLayout(panelCalendarioLayout);
-        panelCalendarioLayout.setHorizontalGroup(
-            panelCalendarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCalendarioLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelCalendarioLayout.setVerticalGroup(
-            panelCalendarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCalendarioLayout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         panelActividades.setBackground(new Color(255,255,255,40));
         panelActividades.setMinimumSize(new java.awt.Dimension(720, 660));
         panelActividades.setOpaque(true);
@@ -375,7 +348,7 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
                             .addComponent(lblVer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 0, 0)
-                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
+                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
 
@@ -385,9 +358,7 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
             panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPrincipalLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelReloj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelCalendario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(panelReloj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(10, 10, 10)
                 .addComponent(panelActividades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
@@ -399,8 +370,7 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addComponent(panelReloj, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                        .addGap(10, 10, 10)
-                        .addComponent(panelCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, 478, Short.MAX_VALUE))
+                        .addGap(488, 488, 488))
                     .addComponent(panelActividades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(10, 10, 10))
         );
@@ -578,7 +548,6 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel content;
-    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel labelFondo;
     private javax.swing.JLabel lblCerrar;
     private javax.swing.JLabel lblConfiguracion;
@@ -592,7 +561,6 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblVer;
     private org.organillama.PanelRound panelActividades;
     private javax.swing.JPanel panelBarraSuperior;
-    private org.organillama.PanelRound panelCalendario;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JPanel panelFondoContenedor;
     private javax.swing.JPanel panelPrincipal;

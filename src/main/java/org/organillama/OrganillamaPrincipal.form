@@ -209,10 +209,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="panelReloj" max="32767" attributes="0"/>
-                              <Component id="panelCalendario" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="panelReloj" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Component id="panelActividades" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -226,8 +223,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="panelReloj" pref="172" max="32767" attributes="0"/>
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Component id="panelCalendario" pref="478" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="488" max="-2" attributes="0"/>
                               </Group>
                               <Component id="panelActividades" max="32767" attributes="0"/>
                           </Group>
@@ -334,48 +330,6 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="org.organillama.PanelRound" name="panelCalendario">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new Color(255,255,255,40)" type="code"/>
-                    </Property>
-                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[530, 650]"/>
-                    </Property>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[530, 650]"/>
-                    </Property>
-                    <Property name="roundBottomLeft" type="int" value="30"/>
-                    <Property name="roundBottomRight" type="int" value="30"/>
-                    <Property name="roundTopLeft" type="int" value="30"/>
-                    <Property name="roundTopRight" type="int" value="30"/>
-                  </Properties>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                              <Component id="jCalendar1" min="-2" pref="451" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                              <Component id="jCalendar1" min="-2" pref="313" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                  <SubComponents>
-                    <Component class="com.toedter.calendar.JCalendar" name="jCalendar1">
-                    </Component>
-                  </SubComponents>
-                </Container>
                 <Container class="org.organillama.PanelRound" name="panelActividades">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -435,7 +389,7 @@
                                   </Group>
                               </Group>
                               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Component id="content" pref="582" max="32767" attributes="0"/>
+                              <Component id="content" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           </Group>
                       </Group>
