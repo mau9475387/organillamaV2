@@ -4,6 +4,7 @@
  */
 package org.organillama;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -17,6 +18,7 @@ import java.util.Date;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.Timer;
 
 /**
@@ -26,15 +28,27 @@ import javax.swing.Timer;
 public class OrganillamaPrincipal extends javax.swing.JFrame {
     
     public boolean maximizado;
-    Integer value;
-    int xMouse,yMouse;
+    
+    private Integer value;
+    
+    public int xMouse,yMouse;
+    
+    private String fondo;
+    
+    private boolean panelVerOn;
+    
     /**
      * Creates new form OrganillamaPrincipal
      */
     public OrganillamaPrincipal() {
+        fondo = "src//main//java//Imagenes//fondo3.png";
         initComponents();
+        
         inicializarFrameXCodigo();
+        
+        
         this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -57,8 +71,14 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
         lblHora = new javax.swing.JLabel();
         lblRelojIcono = new javax.swing.JLabel();
         lblRelojFecha = new javax.swing.JLabel();
-        panelRound2 = new org.organillama.PanelRound();
-        panelRound3 = new org.organillama.PanelRound();
+        panelCalendario = new org.organillama.PanelRound();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
+        panelActividades = new org.organillama.PanelRound();
+        lblVer = new javax.swing.JLabel();
+        lblCrear = new javax.swing.JLabel();
+        lblUsuario = new javax.swing.JLabel();
+        lblConfiguracion = new javax.swing.JLabel();
+        content = new javax.swing.JPanel();
         labelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -82,7 +102,7 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
         panelFondoContenedor.setOpaque(false);
         panelFondoContenedor.setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        panelBarraSuperior.setBackground(new Color(0,0,0,60));
+        panelBarraSuperior.setBackground(new Color(0,0,0,100));
         panelBarraSuperior.setMaximumSize(new java.awt.Dimension(5000, 40));
         panelBarraSuperior.setMinimumSize(new java.awt.Dimension(1280, 40));
         panelBarraSuperior.setPreferredSize(new java.awt.Dimension(1280, 40));
@@ -176,7 +196,7 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
         panelPrincipal.setOpaque(false);
         panelPrincipal.setPreferredSize(new java.awt.Dimension(1280, 680));
 
-        panelReloj.setBackground(new Color(0,0,0,80));
+        panelReloj.setBackground(new Color(255,255,255,40));
         panelReloj.setMinimumSize(new java.awt.Dimension(530, 170));
         panelReloj.setPreferredSize(new java.awt.Dimension(530, 170));
         panelReloj.setRoundBottomLeft(30);
@@ -207,10 +227,10 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
             .addGroup(panelRelojLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(panelRelojLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblRelojFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                    .addComponent(lblRelojFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
                     .addComponent(lblHora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(lblRelojIcono, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                .addGap(15, 15, 15)
+                .addComponent(lblRelojIcono, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
                 .addGap(28, 28, 28))
         );
         panelRelojLayout.setVerticalGroup(
@@ -227,42 +247,136 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
                 .addGap(24, 24, 24))
         );
 
-        panelRound2.setBackground(new Color(0,0,0,80));
-        panelRound2.setMinimumSize(new java.awt.Dimension(530, 650));
-        panelRound2.setPreferredSize(new java.awt.Dimension(530, 650));
-        panelRound2.setRoundBottomLeft(30);
-        panelRound2.setRoundBottomRight(30);
-        panelRound2.setRoundTopLeft(30);
-        panelRound2.setRoundTopRight(30);
+        panelCalendario.setBackground(new Color(255,255,255,40));
+        panelCalendario.setMinimumSize(new java.awt.Dimension(530, 650));
+        panelCalendario.setPreferredSize(new java.awt.Dimension(530, 650));
+        panelCalendario.setRoundBottomLeft(30);
+        panelCalendario.setRoundBottomRight(30);
+        panelCalendario.setRoundTopLeft(30);
+        panelCalendario.setRoundTopRight(30);
 
-        javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
-        panelRound2.setLayout(panelRound2Layout);
-        panelRound2Layout.setHorizontalGroup(
-            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        javax.swing.GroupLayout panelCalendarioLayout = new javax.swing.GroupLayout(panelCalendario);
+        panelCalendario.setLayout(panelCalendarioLayout);
+        panelCalendarioLayout.setHorizontalGroup(
+            panelCalendarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCalendarioLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        panelRound2Layout.setVerticalGroup(
-            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        panelCalendarioLayout.setVerticalGroup(
+            panelCalendarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelCalendarioLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panelRound3.setBackground(new Color(0,0,0,80));
-        panelRound3.setMinimumSize(new java.awt.Dimension(720, 660));
-        panelRound3.setPreferredSize(new java.awt.Dimension(720, 660));
-        panelRound3.setRoundBottomLeft(30);
-        panelRound3.setRoundBottomRight(30);
-        panelRound3.setRoundTopLeft(30);
-        panelRound3.setRoundTopRight(30);
+        panelActividades.setBackground(new Color(255,255,255,40));
+        panelActividades.setMinimumSize(new java.awt.Dimension(720, 660));
+        panelActividades.setOpaque(true);
+        panelActividades.setPreferredSize(new java.awt.Dimension(720, 660));
+        panelActividades.setRoundBottomLeft(30);
+        panelActividades.setRoundBottomRight(30);
+        panelActividades.setRoundTopLeft(30);
+        panelActividades.setRoundTopRight(30);
 
-        javax.swing.GroupLayout panelRound3Layout = new javax.swing.GroupLayout(panelRound3);
-        panelRound3.setLayout(panelRound3Layout);
-        panelRound3Layout.setHorizontalGroup(
-            panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+        lblVer.setBackground(new Color(0,0,255));
+        lblVer.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        lblVer.setForeground(new java.awt.Color(255, 255, 255));
+        lblVer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblVer.setText("Ver");
+        lblVer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblVer.setMaximumSize(new java.awt.Dimension(120, 60));
+        lblVer.setMinimumSize(new java.awt.Dimension(80, 40));
+        lblVer.setOpaque(true);
+        lblVer.setPreferredSize(new java.awt.Dimension(80, 40));
+        lblVer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblVerMouseClicked(evt);
+            }
+        });
+
+        lblCrear.setBackground(new Color(0,0,255,0));
+        lblCrear.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        lblCrear.setForeground(new java.awt.Color(255, 255, 255));
+        lblCrear.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCrear.setText("Crear");
+        lblCrear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblCrear.setMaximumSize(new java.awt.Dimension(120, 60));
+        lblCrear.setMinimumSize(new java.awt.Dimension(80, 40));
+        lblCrear.setOpaque(true);
+        lblCrear.setPreferredSize(new java.awt.Dimension(80, 40));
+        lblCrear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCrearMouseClicked(evt);
+            }
+        });
+
+        lblUsuario.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
+        lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsuario.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblUsuario.setText("Nom Usuario");
+
+        lblConfiguracion.setBackground(new Color(0,0,0,0));
+        lblConfiguracion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblConfiguracion.setMaximumSize(new java.awt.Dimension(100, 100));
+        lblConfiguracion.setMinimumSize(new java.awt.Dimension(50, 50));
+        lblConfiguracion.setOpaque(true);
+        lblConfiguracion.setPreferredSize(new java.awt.Dimension(50, 50));
+        lblConfiguracion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblConfiguracionMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblConfiguracionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblConfiguracionMouseExited(evt);
+            }
+        });
+
+        content.setBackground(new java.awt.Color(255, 0, 0));
+        content.setMinimumSize(new java.awt.Dimension(700, 570));
+        content.setOpaque(false);
+        content.setPreferredSize(new java.awt.Dimension(700, 570));
+        content.setLayout(new java.awt.BorderLayout());
+
+        javax.swing.GroupLayout panelActividadesLayout = new javax.swing.GroupLayout(panelActividades);
+        panelActividades.setLayout(panelActividadesLayout);
+        panelActividadesLayout.setHorizontalGroup(
+            panelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActividadesLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(panelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelActividadesLayout.createSequentialGroup()
+                        .addComponent(lblVer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(lblCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
-        panelRound3Layout.setVerticalGroup(
-            panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        panelActividadesLayout.setVerticalGroup(
+            panelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelActividadesLayout.createSequentialGroup()
+                .addGroup(panelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelActividadesLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(panelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblConfiguracion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelActividadesLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(panelActividadesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblVer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCrear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 0, 0)
+                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
+                .addGap(10, 10, 10))
         );
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
@@ -273,9 +387,9 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelReloj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelRound2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(panelCalendario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(10, 10, 10)
-                .addComponent(panelRound3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelActividades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
         panelPrincipalLayout.setVerticalGroup(
@@ -286,8 +400,8 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addComponent(panelReloj, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
                         .addGap(10, 10, 10)
-                        .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, 478, Short.MAX_VALUE))
-                    .addComponent(panelRound3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(panelCalendario, javax.swing.GroupLayout.PREFERRED_SIZE, 478, Short.MAX_VALUE))
+                    .addComponent(panelActividades, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(10, 10, 10))
         );
 
@@ -400,6 +514,33 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_panelBarraSuperiorMouseClicked
 
+    private void lblConfiguracionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblConfiguracionMouseEntered
+        CambioImagen(lblConfiguracion, "src//main//java//Imagenes//configuracionCian.png", 80);
+    }//GEN-LAST:event_lblConfiguracionMouseEntered
+
+    private void lblConfiguracionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblConfiguracionMouseExited
+       CambioImagen(lblConfiguracion, "src//main//java//Imagenes//configuracion.png", 0);
+    }//GEN-LAST:event_lblConfiguracionMouseExited
+
+    private void lblConfiguracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblConfiguracionMouseClicked
+        
+    }//GEN-LAST:event_lblConfiguracionMouseClicked
+
+    private void lblVerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVerMouseClicked
+        imagen(labelFondo,fondo);
+        panelVer ver= new panelVer();
+        panelCrear crear= new panelCrear();
+        mostrarPanel(ver,crear);
+        
+    }//GEN-LAST:event_lblVerMouseClicked
+
+    private void lblCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCrearMouseClicked
+       panelVer ver= new panelVer();
+        panelCrear crear= new panelCrear();
+        mostrarPanel(ver,crear);
+        imagen(labelFondo,fondo);
+    }//GEN-LAST:event_lblCrearMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -436,20 +577,26 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel content;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel labelFondo;
     private javax.swing.JLabel lblCerrar;
+    private javax.swing.JLabel lblConfiguracion;
+    private javax.swing.JLabel lblCrear;
     private javax.swing.JLabel lblHora;
     private javax.swing.JLabel lblMaximizar;
     private javax.swing.JLabel lblMinimizar;
     private javax.swing.JLabel lblRelojFecha;
     private javax.swing.JLabel lblRelojIcono;
+    private javax.swing.JLabel lblUsuario;
+    private javax.swing.JLabel lblVer;
+    private org.organillama.PanelRound panelActividades;
     private javax.swing.JPanel panelBarraSuperior;
+    private org.organillama.PanelRound panelCalendario;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JPanel panelFondoContenedor;
     private javax.swing.JPanel panelPrincipal;
     private org.organillama.PanelRound panelReloj;
-    private org.organillama.PanelRound panelRound2;
-    private org.organillama.PanelRound panelRound3;
     // End of variables declaration//GEN-END:variables
     public void inicializarFrameXCodigo(){
         this.setSize(1280, 720);
@@ -458,11 +605,17 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
         
         labelFondo.setBounds(0,0,1280,720);
         labelFondo.setMaximumSize(new Dimension(1280,720));
-        imagen(labelFondo,"src//main//java//Imagenes//fondo2.png");
+        imagen(labelFondo,fondo);
         
         imagen(lblCerrar, "src//main//java//Imagenes//btnCerrarBlanco.png");
         imagen(lblMaximizar, "src//main//java//Imagenes//btnMaximizarBlanco.png");
         imagen(lblMinimizar, "src//main//java//Imagenes//btnMinimizarBlanco.png");
+        imagen(lblConfiguracion,"src//main//java//Imagenes//configuracion.png");
+        
+        panelVerOn = true;
+        panelVer ver= new panelVer();
+        panelCrear crear= new panelCrear();
+        mostrarPanel(ver,crear);
         
         tiempo();
     }
@@ -483,7 +636,7 @@ public void extender(){//maximizar o minimizar el frame
         
         maximizado = true;
         
-        imagen(labelFondo,"src//main//java//Imagenes//fondo2.png");
+        imagen(labelFondo,fondo);
    }else{
         this.setSize(new Dimension(1280,720));
         
@@ -491,7 +644,7 @@ public void extender(){//maximizar o minimizar el frame
         
         this.setLocationRelativeTo(null);
         maximizado = false; 
-        imagen(labelFondo,"src//main//java//Imagenes//fondo2.png");
+        imagen(labelFondo,fondo);
    } 
 }
 
@@ -511,6 +664,7 @@ public void ajustar(int x, int y){ //cambia el tamaño de: jframe y jpanel para 
         
         ajustarFuentes(lblHora);
         ajustarFuentes(lblRelojFecha);
+        ajustarFuentes(lblRelojIcono);
 }
 
 public void imagen(JLabel lbl,String ruta){ //cambiar imágenes de las etiquetas
@@ -531,7 +685,7 @@ public void CambioImagen(JLabel lbl,String ruta,int intensidad){ //cambia la ima
     lbl.setIcon(icono);
     lbl.repaint();
     
-    imagen(labelFondo,"src//main//java//Imagenes//fondo2.png");
+    imagen(labelFondo,fondo);
     
 }
 
@@ -539,7 +693,7 @@ public void tiempo()
     {
         
         
-        imagen(labelFondo,"src//main//java//Imagenes//fondo2.png");
+        imagen(labelFondo,fondo);
         
         Timer timer;
         
@@ -564,21 +718,21 @@ public void tiempo()
                 
                 value = Integer.valueOf(status);
                 
-                 if((value>=00)&&(value<13))
+                 if((value>=06)&&(value<13))
                 {                    
                     imagen(lblRelojIcono,"src//main//java//Imagenes//mañana.png");
                     
-                    imagen(labelFondo,"src//main//java//Imagenes//fondo2.png");
+                    imagen(labelFondo,fondo);
                     
                     lblRelojFecha.setForeground(Color.white);
                     
                     
                 }
-                if((value>=13)&&(value<18))
+                if((value>=13)&&(value<20))
                 {                    
                     imagen(lblRelojIcono,"src//main//java//Imagenes//tarde.png");
                     
-                    imagen(labelFondo,"src//main//java//Imagenes//fondo2.png");
+                    imagen(labelFondo,fondo);
                     
                     lblRelojFecha.setForeground(Color.white);
                     
@@ -586,11 +740,12 @@ public void tiempo()
                     
                     
                 }
-                if((value>=18)&&(value<=24))
+                if((value>=20)&&(value<=24)||(value>=00)&&(value<06))
+                
                 {
                     imagen(lblRelojIcono,"src//main//java//Imagenes//noche.png");
                     
-                    imagen(labelFondo,"src//main//java//Imagenes//fondo2.png");
+                    imagen(labelFondo,fondo);
                     
                     lblRelojFecha.setForeground(Color.white);
                     
@@ -613,13 +768,45 @@ public void tiempo()
 public void ajustarFuentes(JLabel lbl ){
     if(maximizado==false){
         lbl.setFont(new Font("Roboto",Font.BOLD, lbl.getFont().getSize()*3/2)); 
+        lbl.setPreferredSize(new Dimension(lbl.getWidth()*3/2,lbl.getHeight()*3/2));
+        lbl.setSize(new Dimension(lbl.getWidth()*3/2,lbl.getHeight()*3/2));
         
     }else{
         lbl.setFont(new Font("Roboto",Font.BOLD,lbl.getFont().getSize()*2/3));
+        lbl.setPreferredSize(new Dimension(lbl.getWidth()*3/2,lbl.getHeight()*2/3));
+        lbl.setSize(new Dimension(lbl.getWidth()*3/2,lbl.getHeight()*2/3));
+        
     }
 }
-    
+
+private void ShowPanel(JPanel p){
+        p.setSize(790,740);
+        p.setLocation(0,0);
+        
+        content.removeAll();
+        content.add(p,BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+        
+    }
+public void mostrarPanel(JPanel pan1,JPanel pan2){
+    if(panelVerOn==false){
+        lblCrear.setBackground(new Color(0,0,255,0));
+        lblVer.setBackground(new Color(0,0,255));
+        ShowPanel(pan1);
+        panelVerOn =true;
+        
+    }else{
+        lblCrear.setBackground(new Color(0,0,255));
+        lblVer.setBackground(new Color(0,0,255,0));
+        ShowPanel(pan2);
+        panelVerOn=false;
+    }
+}
+
 /*
 Fin Métodos    
 */    
+
+
 }
