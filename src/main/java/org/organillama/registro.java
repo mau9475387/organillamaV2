@@ -4,6 +4,7 @@
  */
 package org.organillama;
 
+import ConexionMysql.ConexionMysql;
 import static java.awt.Color.black;
 import java.awt.Image;
 import java.awt.Label;
@@ -18,6 +19,7 @@ import java.util.Set;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
+import java.sql.Connection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -475,12 +477,23 @@ public class registro extends javax.swing.JFrame {
     }//GEN-LAST:event_BarraSuperiorMousePressed
 
     private void btnRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarseMouseClicked
+
+        ConexionMysql con = new ConexionMysql();
+        Connection cn = con.conectar();
+               
+        String nombre = TextFieldNombre.getText();
+        String usuario = TextFieldUsuario.getText();
+        String password = PasswordFieldContraseña.getText();
+        String correo = TextFieldCorreo.getText();
+
         if(PasswordFieldContraseñaConf.getText().equals(PasswordFieldContraseña.getText())){
             Login log = new Login();
             log.setVisible(true);
             //inserte método para añadir datos a la BD
             this.dispose();
         }
+        
+        
         else{
             JOptionPane.showMessageDialog(null, "Reescriba la contraseña", "Confirmacion no valida"
                 ,JOptionPane.INFORMATION_MESSAGE);

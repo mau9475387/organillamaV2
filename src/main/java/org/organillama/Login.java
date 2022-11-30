@@ -4,11 +4,18 @@
  */
 package org.organillama;
 
+import ConexionMysql.ConexionMysql;
 import java.awt.Color;
 import java.awt.Image;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,6 +23,8 @@ import javax.swing.JLabel;
  */
 public class Login extends javax.swing.JFrame {
     public int xMouse,yMouse;
+    public int idusuario;
+    
     
     public Login() {
         BaseDeDatos BD = new BaseDeDatos();
@@ -24,6 +33,7 @@ public class Login extends javax.swing.JFrame {
         imagen(fondo, "src//main//java//Imagenes//fondoLogin.png");
         imagen(lblCerrar, "src//main//java//Imagenes//btnCerrarBlanco.png");
         this.setLocationRelativeTo(null);
+        idusuario = -1;
     }
 
     /**
@@ -43,8 +53,8 @@ public class Login extends javax.swing.JFrame {
         Contraseña = new javax.swing.JLabel();
         lblCreaCuenta = new javax.swing.JLabel();
         lblIngresar = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtusuario = new javax.swing.JTextField();
+        txtpass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -144,17 +154,56 @@ public class Login extends javax.swing.JFrame {
         });
         getContentPane().add(lblIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
 
-        jTextField1.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField1.setText("Ingrese su nombre de usuario");
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 240, 30));
+        txtusuario.setForeground(new java.awt.Color(204, 204, 204));
+        txtusuario.setText("Ingrese su nombre de usuario");
+        getContentPane().add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 240, 30));
 
-        jPasswordField1.setForeground(new java.awt.Color(204, 204, 204));
-        jPasswordField1.setText("jPasswordField1");
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 240, 30));
+        txtpass.setForeground(new java.awt.Color(204, 204, 204));
+        txtpass.setText("jPasswordField1");
+        getContentPane().add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 240, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public Connection Conectar(){
+        Connection con = null;
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb","Colque","Colque123");
+        } catch (SQLException e) {
+            System.out.print(e.toString());
+            JOptionPane.showMessageDialog(this, "error inesperado");
+        }
+        return con;
+    }
+    
+    public void ingresar(){
+              Connection con1 = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        String User = txtusuario.getText();
+        String Pass = txtpass.getText();
+        if(User.equals("")||Pass.equals("")){
+            JOptionPane.showMessageDialog(this, "uno o mas campos estan vacios");
+        }else{
+            try {
+                con1 = Conectar();
+                pst = con1.prepareStatement("select iduser,correo,password from user where correo='"+User+"'and password='"+Pass+"'");
+                rs = pst.executeQuery();
+                if(rs.next()){
+                    idusuario = 
+                    this.dispose();
+                    new OrganillamaPrincipal().setVisible(true);
+                    JOptionPane.showMessageDialog(this, "BIENVENIDO.!!");
+                }else{
+                    JOptionPane.showMessageDialog(this, "credenciales incorrectas");
+                }
+            } catch (SQLException e) {
+                System.err.print(e.toString());
+                JOptionPane.showMessageDialog(this, "crerror inesperado");
+            }
+        }
+    }
+    
     private void barraSuperiorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_barraSuperiorMousePressed
         xMouse = evt.getX();
         yMouse = evt.getY();
@@ -187,13 +236,14 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_lblCreaCuentaMouseExited
 
     private void lblIngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIngresarMouseClicked
-        OrganillamaPrincipal principal = new OrganillamaPrincipal();
-        principal.setVisible(true);
-        this.dispose();
+      ingresar();
+//        OrganillamaPrincipal principal = new OrganillamaPrincipal();
+  //      principal.setVisible(true);
+    //    this.dispose();
     }//GEN-LAST:event_lblIngresarMouseClicked
 
     private void lblCreaCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCreaCuentaMouseClicked
-       registro reg= new registro();
+ registro reg= new registro();
        reg.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_lblCreaCuentaMouseClicked
@@ -239,11 +289,11 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel Usuario;
     private javax.swing.JPanel barraSuperior;
     private javax.swing.JLabel fondo;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblCerrar;
     private javax.swing.JLabel lblCreaCuenta;
     private javax.swing.JLabel lblIngresar;
+    private javax.swing.JPasswordField txtpass;
+    private javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
 
 public void imagen(JLabel lbl,String ruta){ //cambiar imágenes de las etiquetas
