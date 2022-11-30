@@ -32,6 +32,7 @@ public class registro extends javax.swing.JFrame {
   
         imagen(lblMinimizar, "src//main//java//Imagenes//btnMinimizarBlanco.png");
         imagen(lblImagen,"src//main//java//Imagenes//LlenarDatos.png");
+        imagen(lblFlechaIz,"src//main//java//Imagenes//FlechaIz.png");
     }
 
     @SuppressWarnings("unchecked")
@@ -42,6 +43,7 @@ public class registro extends javax.swing.JFrame {
         BarraSuperior = new javax.swing.JPanel();
         lblCerrar = new javax.swing.JLabel();
         lblMinimizar = new javax.swing.JLabel();
+        lblFlechaIz = new javax.swing.JLabel();
         ContenidoInferior = new javax.swing.JPanel();
         lblRegistrate = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
@@ -114,12 +116,29 @@ public class registro extends javax.swing.JFrame {
             }
         });
 
+        lblFlechaIz.setBackground(new Color(0,0,0,0));
+        lblFlechaIz.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblFlechaIz.setOpaque(true);
+        lblFlechaIz.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblFlechaIzMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblFlechaIzMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblFlechaIzMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout BarraSuperiorLayout = new javax.swing.GroupLayout(BarraSuperior);
         BarraSuperior.setLayout(BarraSuperiorLayout);
         BarraSuperiorLayout.setHorizontalGroup(
             BarraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BarraSuperiorLayout.createSequentialGroup()
-                .addContainerGap(662, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(lblFlechaIz, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(lblCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -128,8 +147,9 @@ public class registro extends javax.swing.JFrame {
         BarraSuperiorLayout.setVerticalGroup(
             BarraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BarraSuperiorLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
+                .addContainerGap()
                 .addGroup(BarraSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblFlechaIz, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5))
@@ -276,25 +296,25 @@ public class registro extends javax.swing.JFrame {
                 .addGroup(ContenidoInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(ContenidoInferiorLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addGroup(ContenidoInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(ContenidoInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblNombre)
                             .addComponent(lblConfContraseña)
-                            .addComponent(PasswordFieldContraseñaConf, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblCorreo)
-                            .addComponent(TextFieldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(ContenidoInferiorLayout.createSequentialGroup()
                                 .addComponent(btnRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lblUsuario)
-                            .addComponent(TextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblContraseña)
-                            .addComponent(TextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PasswordFieldContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TextFieldNombre)
+                            .addComponent(TextFieldUsuario)
+                            .addComponent(PasswordFieldContraseña)
+                            .addComponent(PasswordFieldContraseñaConf)
+                            .addComponent(TextFieldCorreo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblRegistrate, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 37, Short.MAX_VALUE))
         );
         ContenidoInferiorLayout.setVerticalGroup(
             ContenidoInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -481,6 +501,18 @@ public class registro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordFieldContraseñaConfActionPerformed
 
+    private void lblFlechaIzMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFlechaIzMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblFlechaIzMouseClicked
+
+    private void lblFlechaIzMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFlechaIzMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblFlechaIzMouseEntered
+
+    private void lblFlechaIzMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFlechaIzMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblFlechaIzMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -507,6 +539,7 @@ public class registro extends javax.swing.JFrame {
     private javax.swing.JLabel lblConfContraseña;
     private javax.swing.JLabel lblContraseña;
     private javax.swing.JLabel lblCorreo;
+    private javax.swing.JLabel lblFlechaIz;
     private javax.swing.JLabel lblImagen;
     private javax.swing.JLabel lblMinimizar;
     private javax.swing.JLabel lblNombre;
