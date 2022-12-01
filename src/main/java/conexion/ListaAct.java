@@ -26,7 +26,7 @@ public class ListaAct {
         Conectar conec = new Conectar();
         String sql = "SELECT idactividad,nombreact,descripcion,fecha,horaini,horafin,idproy\n" +
                      "FROM mydb.user u,mydb.proyecto p ,mydb.subarea s,mydb.area a,mydb.actividad act\n" +
-                     "WHERE iduser="+idUser+";";
+                     "WHERE u.iduser=a.idusuario and a.idarea=s.idar and  s.idsubarea=p.idsuba and p.idproyecto=act.idproy and iduser="+idUser+";";
         ResultSet rs=null;
         PreparedStatement ps=null;
         try {
@@ -64,7 +64,7 @@ public class ListaAct {
         Conectar conec = new Conectar();
         String sql = "SELECT idactividad,nombreact,descripcion,fecha,horaini,horafin,idproy\n" +
                      "FROM mydb.user u,mydb.proyecto p ,mydb.subarea s,mydb.area a,mydb.actividad act\n" +
-                     "WHERE iduser="+idUser+" and idarea="+idArea+";";
+                     "WHERE u.iduser=a.idusuario and a.idarea=s.idar and  s.idsubarea=p.idsuba and p.idproyecto=act.idproy and iduser="+idUser+" and idarea="+idArea+";";
         ResultSet rs=null;
         PreparedStatement ps=null;
         try {
@@ -103,7 +103,7 @@ public class ListaAct {
         Conectar conec = new Conectar();
         String sql = "SELECT idactividad,nombreact,descripcion,fecha,horaini,horafin,idproy\n" +
                      "FROM mydb.user u,mydb.proyecto p ,mydb.subarea s,mydb.area a,mydb.actividad act\n" +
-                     "WHERE iduser="+idUser+" and area= "+idArea+" and idsubarea="+idSubArea+";";
+                     "WHERE u.iduser=a.idusuario and a.idarea=s.idar and  s.idsubarea=p.idsuba and p.idproyecto=act.idproy and iduser="+idUser+" and area= "+idArea+" and idsubarea="+idSubArea+";";
         ResultSet rs=null;
         PreparedStatement ps=null;
         try {
@@ -143,7 +143,7 @@ public class ListaAct {
         Conectar conec = new Conectar();
         String sql = "SELECT idactividad,nombreact,descripcion,fecha,horaini,horafin,idproy\n" +
                      "FROM mydb.user u,mydb.proyecto p ,mydb.subarea s,mydb.area a,mydb.actividad act\n" +
-                     "WHERE iduser="+idUser+" and area = "+idArea+" and idsubarea = "+idSubArea+" and fecha="+fecha+";";
+                     "WHERE u.iduser=a.idusuario and a.idarea=s.idar and  s.idsubarea=p.idsuba and p.idproyecto=act.idproy and iduser="+idUser+" and area = "+idArea+" and idsubarea = "+idSubArea+" and fecha="+fecha+";";
         ResultSet rs=null;
         PreparedStatement ps=null;
         try {
