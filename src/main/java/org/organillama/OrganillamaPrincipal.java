@@ -264,7 +264,7 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel1.setText("Buscar Fecha");
 
-        jDateChooser1.setDateFormatString("yyyy-mm-dd");
+        jDateChooser1.setDateFormatString("yyyy-MM-dd");
         jDateChooser1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
 
         jCalendar1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N

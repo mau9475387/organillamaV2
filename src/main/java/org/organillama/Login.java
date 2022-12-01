@@ -103,7 +103,7 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(InicioDeSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 270, 50));
 
         Usuario.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        Usuario.setText("Usuario:");
+        Usuario.setText("Correo:");
         getContentPane().add(Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 80, 30));
 
         Contraseña.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
@@ -155,7 +155,7 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(lblIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
 
         txtusuario.setForeground(new java.awt.Color(204, 204, 204));
-        txtusuario.setText("Ingrese su nombre de usuario");
+        txtusuario.setText("Ingrese su correo");
         getContentPane().add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 240, 30));
 
         txtpass.setForeground(new java.awt.Color(204, 204, 204));

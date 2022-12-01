@@ -131,7 +131,7 @@ public class NuevaActividad extends javax.swing.JFrame {
             }
         });
 
-        fechaAct.setDateFormatString("yyyy-mm-dd");
+        fechaAct.setDateFormatString("yyyy-MM-dd");
 
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel7.setText("Hora Fin");
@@ -248,32 +248,29 @@ public class NuevaActividad extends javax.swing.JFrame {
 
         ConexionMysql con = new ConexionMysql();
        Connection cn = con.conectar();
-        
-      //  Toolkit area = Area.();
+       
+        String area = Area.getToolTipText();
         String nombre = txtNombre.getText();
         String descripcion = txtDescripcion.getText();
         String fechaActividad = ((JTextField)fechaAct.getDateEditor().getUiComponent()).getText();
         String horaIni = horaini.getText();
         String horaFin = horafin.getText();
-        //String fecha = cumpleañosdate.getDateFormatString();
- //       if (password.equals(password2)){
-        
-  //      String nuevoPassword = hash.sha1(password);
-        
-        if ((nombre.isEmpty()) || descripcion.isEmpty() || fechaActividad.isEmpty() || horaIni.isEmpty() || horaFin.isEmpty()) {
+     
+        if (nombre.isEmpty() || descripcion.isEmpty() || fechaActividad.isEmpty() || horaIni.isEmpty() || horaFin.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Complete todos los datos.");
         } else {
-            try {
-                String consulta = "INSERT INTO `llamadev`.`usuarios` (`nombre`, `descripcion`, `fecha`, `horaini`, `horafin`) VALUES ('" + nombre + "', '"+descripcion+"', '"+fechaActividad+"', '"+horaini+"', '"+horafin+"');";
+           NuevaActSql act = new NuevaActSql(nombre, fechaActividad, descripcion, horaIni, horaFin, 1);
+     /*    try {
+                String consulta = "INSERT INTO actividad VALUES ('" + nombre + "', '"+descripcion+"', '"+fechaActividad+"', '"+horaini+"', '"+horafin+"');";
                 PreparedStatement ps = cn.prepareStatement(consulta);
 
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Usuario registrado");
             } catch (HeadlessException | SQLException e) {
                 JOptionPane.showMessageDialog(null, "No se pudo registrar el Usuario, verifique sus datos.");
-            }
+            }*/
         
-        //fr.setEnabled(true);
+        fr.setEnabled(true);
        //inserte Creacion de Actividad en la BD
        this.dispose();
         } 

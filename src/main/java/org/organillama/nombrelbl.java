@@ -45,11 +45,11 @@ public class nombrelbl {
             }
 
         } catch (ClassNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "conexion error2");
+    //        JOptionPane.showMessageDialog(null, "conexion error2");
         } catch(SQLException e){
-           JOptionPane.showMessageDialog(null, "sqlerror2");
+    //       JOptionPane.showMessageDialog(null, "sqlerror2");
         }finally{
-            JOptionPane.showMessageDialog(null, "conexion exitosa2");
+    //        JOptionPane.showMessageDialog(null, "conexion exitosa2");
         }
         return res;
 }

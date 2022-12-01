@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 public class NuevaActSql {
     Connection conectar = null;
     String user = "Colque";
-    String password = "Colqu123";
+    String password = "Colque123";
     String ip = "localhost";
     String bd = "mydb";
     String puerto = "3306";
