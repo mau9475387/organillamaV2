@@ -22,7 +22,7 @@ public class ConexionMysql {
         public Connection conectar(){
          try {
         Class.forName("com.mysql.jdbc.Driver");
-        cn=DriverManager.getConnection("jdbc:mysql://localhost/llamadev","Colque","Colque123");
+        cn=DriverManager.getConnection("jdbc:mysql://localhost/mydb","Colque","Colque123");
             System.out.println("CONECTADO");
             } catch (ClassNotFoundException | SQLException e) {
             System.out.println("ERROR DE CONEXION BD"+e);

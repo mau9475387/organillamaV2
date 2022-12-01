@@ -4,11 +4,19 @@
  */
 package org.organillama;
 
+import ConexionMysql.ConexionMysql;
+import java.awt.HeadlessException;
 import java.awt.Image;
+import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -47,7 +55,7 @@ public class NuevaActividad extends javax.swing.JFrame {
         lblCrear = new javax.swing.JLabel();
         lblCancelar = new javax.swing.JLabel();
         lblImagen = new javax.swing.JLabel();
-        fechaActividad = new com.toedter.calendar.JDateChooser();
+        fechaAct = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
         horaini = new javax.swing.JTextField();
         horafin = new javax.swing.JTextField();
@@ -94,6 +102,15 @@ public class NuevaActividad extends javax.swing.JFrame {
         lblCrear.setMinimumSize(new java.awt.Dimension(120, 50));
         lblCrear.setOpaque(true);
         lblCrear.setPreferredSize(new java.awt.Dimension(120, 50));
+        lblCrear.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                lblCrearAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         lblCrear.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblCrearMouseClicked(evt);
@@ -114,7 +131,7 @@ public class NuevaActividad extends javax.swing.JFrame {
             }
         });
 
-        fechaActividad.setDateFormatString("yyyy-mm-dd");
+        fechaAct.setDateFormatString("yyyy-mm-dd");
 
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel7.setText("Hora Fin");
@@ -147,7 +164,7 @@ public class NuevaActividad extends javax.swing.JFrame {
                                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jScrollPane1)
                                     .addComponent(jLabel5)
-                                    .addComponent(fechaActividad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(fechaAct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
                                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -197,7 +214,7 @@ public class NuevaActividad extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fechaActividad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(fechaAct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -228,9 +245,38 @@ public class NuevaActividad extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblCrearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCrearMouseClicked
-       fr.setEnabled(true);
+
+        ConexionMysql con = new ConexionMysql();
+       Connection cn = con.conectar();
+        
+      //  Toolkit area = Area.();
+        String nombre = txtNombre.getText();
+        String descripcion = txtDescripcion.getText();
+        String fechaActividad = ((JTextField)fechaAct.getDateEditor().getUiComponent()).getText();
+        String horaIni = horaini.getText();
+        String horaFin = horafin.getText();
+        //String fecha = cumpleañosdate.getDateFormatString();
+ //       if (password.equals(password2)){
+        
+  //      String nuevoPassword = hash.sha1(password);
+        
+        if ((nombre.isEmpty()) || descripcion.isEmpty() || fechaActividad.isEmpty() || horaIni.isEmpty() || horaFin.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Complete todos los datos.");
+        } else {
+            try {
+                String consulta = "INSERT INTO `llamadev`.`usuarios` (`nombre`, `descripcion`, `fecha`, `horaini`, `horafin`) VALUES ('" + nombre + "', '"+descripcion+"', '"+fechaActividad+"', '"+horaini+"', '"+horafin+"');";
+                PreparedStatement ps = cn.prepareStatement(consulta);
+
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Usuario registrado");
+            } catch (HeadlessException | SQLException e) {
+                JOptionPane.showMessageDialog(null, "No se pudo registrar el Usuario, verifique sus datos.");
+            }
+        
+        //fr.setEnabled(true);
        //inserte Creacion de Actividad en la BD
        this.dispose();
+        } 
     }//GEN-LAST:event_lblCrearMouseClicked
 
     private void lblCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCancelarMouseClicked
@@ -242,6 +288,10 @@ public class NuevaActividad extends javax.swing.JFrame {
     private void horafinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_horafinActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_horafinActionPerformed
+
+    private void lblCrearAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblCrearAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblCrearAncestorAdded
 
     /**
      * @param args the command line arguments
@@ -282,7 +332,7 @@ public class NuevaActividad extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Area;
-    private com.toedter.calendar.JDateChooser fechaActividad;
+    private com.toedter.calendar.JDateChooser fechaAct;
     private javax.swing.JPanel fondo;
     private javax.swing.JTextField horafin;
     private javax.swing.JTextField horaini;

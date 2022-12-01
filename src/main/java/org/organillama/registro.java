@@ -19,7 +19,10 @@ import java.util.Set;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
+import java.awt.HeadlessException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -482,10 +485,22 @@ public class registro extends javax.swing.JFrame {
         Connection cn = con.conectar();
                
         String nombre = TextFieldNombre.getText();
-        String usuario = TextFieldUsuario.getText();
         String password = PasswordFieldContraseña.getText();
         String correo = TextFieldCorreo.getText();
 
+        if ((nombre.isEmpty() || password.isEmpty()) || correo.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Complete todos los datos.");
+        } else {
+            try {
+                String consulta = "INSERT INTO user VALUES (null, '"+nombre+"', '"+correo+"', '"+password+"', null, null);";
+                PreparedStatement ps = cn.prepareStatement(consulta);
+
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Usuario registrado");
+            } catch (HeadlessException | SQLException e) {
+                JOptionPane.showMessageDialog(null, "No se pudo registrar el Usuario, verifique sus datos.");
+            }
+        
         if(PasswordFieldContraseñaConf.getText().equals(PasswordFieldContraseña.getText())){
             Login log = new Login();
             log.setVisible(true);
@@ -493,7 +508,7 @@ public class registro extends javax.swing.JFrame {
             this.dispose();
         }
         
-        
+        /*
         else{
             JOptionPane.showMessageDialog(null, "Reescriba la contraseña", "Confirmacion no valida"
                 ,JOptionPane.INFORMATION_MESSAGE);
@@ -513,11 +528,10 @@ public class registro extends javax.swing.JFrame {
         if(PasswordFieldContraseñaConf.getText().equals("jPasswordField1") || PasswordFieldContraseñaConf.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Ingrese su Contraseña", "Casilla Vacia"
                 ,JOptionPane.INFORMATION_MESSAGE);
-        }
+       */ }
     }//GEN-LAST:event_btnRegistrarseMouseClicked
 
     private void PasswordFieldContraseñaConfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldContraseñaConfActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_PasswordFieldContraseñaConfActionPerformed
 
     private void lblFlechaIzMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFlechaIzMouseClicked

@@ -37,15 +37,19 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
     
     private boolean panelVerOn;
     
+    public int idusuario;
     /**
      * Creates new form OrganillamaPrincipal
      */
-    public OrganillamaPrincipal() {
+    public OrganillamaPrincipal(int n) {
+        
+        
         fondo = "src//main//java//Imagenes//fondo3.png";
         initComponents();
         
         inicializarFrameXCodigo();
         
+        idusuario = n;
         
         this.setLocationRelativeTo(null);
         
@@ -595,7 +599,9 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new OrganillamaPrincipal().setVisible(true);
+                int idusuario = -1;
+                new OrganillamaPrincipal(idusuario).setVisible(true);
+                
             }
         });
     }
@@ -642,7 +648,9 @@ public class OrganillamaPrincipal extends javax.swing.JFrame {
         panelVer ver= new panelVer();
         panelCrear crear= new panelCrear(this);
         mostrarPanel(ver,crear);
-        
+        nombrelbl z = new nombrelbl();
+        String usuario = z.nombre(idusuario);
+        lblUsuario.setText(usuario);
         tiempo();
     }
 /*

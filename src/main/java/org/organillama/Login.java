@@ -190,9 +190,9 @@ public class Login extends javax.swing.JFrame {
                 pst = con1.prepareStatement("select iduser,correo,password from user where correo='"+User+"'and password='"+Pass+"'");
                 rs = pst.executeQuery();
                 if(rs.next()){
-                    idusuario = 
+                    idusuario = idusuario=rs.getInt(1);
                     this.dispose();
-                    new OrganillamaPrincipal().setVisible(true);
+                    new OrganillamaPrincipal(idusuario).setVisible(true);
                     JOptionPane.showMessageDialog(this, "BIENVENIDO.!!");
                 }else{
                     JOptionPane.showMessageDialog(this, "credenciales incorrectas");
